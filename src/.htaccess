@@ -1,0 +1,3 @@
+RewriteEngine On
+
+RewriteRule ^get-info/(\d+)*$ ./info.php?id=$1
