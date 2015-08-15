@@ -70,3 +70,25 @@ function existsEmailInUsers(PDO $dbh, $email)
 	$sth->query(['email' => $email]);
 	return ($sth->fetch() > 0);
 }
+
+function userExists(PDO $dbh, $userId) {
+	$sql = '
+		SELECT COUNT(id)
+		FROM users
+		WHERE id = :id';
+	$sth = $dbh->prepare($sql);
+	$sth->query(['id' => $userId]);
+	return ($sth->fetch() > 0);
+}
+
+
+function getUserInformation(PDO $dbh, $userId)
+{
+	$sql = '
+		SELECT email, name, surname
+		FROM users
+		WHERE id = :id';
+	$sth = $dbh->prepare($sql);
+	$sth->query(['id' => $userId]);
+	return $sth->fetch();
+}
