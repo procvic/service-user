@@ -19,7 +19,7 @@ $app->get('/me', function () use ($app, $result) {
 });
 
 
-$app->get('/get-info/:id', function ($id) use ($app, $result) {
+$app->get('/get-info/:id', function ($id) use ($app) {
     $response = $app->response();
     $response['Content-Type'] = 'application/json';
     $pdo = connectDB();
