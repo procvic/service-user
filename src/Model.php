@@ -72,7 +72,7 @@ function existsEmailInUsers(PDO $dbh, $email)
 		FROM users
 		WHERE email = :email';
     $sth = $dbh->prepare($sql);
-    $sth->query(['email' => $email]);
+    $sth->execute(['email' => $email]);
 
     return ($sth->fetch() > 0);
 }

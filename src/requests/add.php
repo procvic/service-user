@@ -18,6 +18,7 @@ $app->post('/add', function () use ($app) {
     if (existsEmailInUsers($pdo, $email)) {
         $response->status(400);
         $response->body(json_encode(['error' => 'Email is already registered.']));
+        return;
     }
 
     registerWithPassword($pdo, $email, $password);
