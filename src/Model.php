@@ -85,7 +85,7 @@ function userExists(PDO $dbh, $userId)
 		FROM users
 		WHERE id = :id';
     $sth = $dbh->prepare($sql);
-    $sth->query(['id' => $userId]);
+    $sth->execute(['id' => $userId]);
 
     return ($sth->fetch() > 0);
 }
@@ -98,7 +98,7 @@ function getUserInformation(PDO $dbh, $userId)
 		FROM users
 		WHERE id = :id';
     $sth = $dbh->prepare($sql);
-    $sth->query(['id' => $userId]);
+    $sth->execute(['id' => $userId]);
 
     return $sth->fetch();
 }
