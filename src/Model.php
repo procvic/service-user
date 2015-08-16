@@ -52,14 +52,14 @@ function registerWithPassword(PDO $dbh, $email, $password)
     ];
 
     $sql = '
-		INSERT INTO users (email, password, role)
-		VALUES(:email, :password, :role)';
+        INSERT INTO users (email, password, role)
+        VALUES(:email, :password, :role)';
     $sth = $dbh->prepare($sql);
     $sth->execute($userData);
 
     $sql = '
-		INSERT INTO users_verified_emails (hash, verified, user)
-		VALUES(:hash, :verified, LAST_INSERT_ID())';
+        INSERT INTO users_verified_emails (hash, verified, user)
+        VALUES(:hash, :verified, LAST_INSERT_ID())';
     $sth = $dbh->prepare($sql);
     $sth->execute($emailData);
 }
@@ -68,9 +68,9 @@ function registerWithPassword(PDO $dbh, $email, $password)
 function existsEmailInUsers(PDO $dbh, $email)
 {
     $sql = '
-		SELECT COUNT(id)
-		FROM users
-		WHERE email = :email';
+        SELECT COUNT(id)
+        FROM users
+        WHERE email = :email';
     $sth = $dbh->prepare($sql);
     $sth->execute(['email' => $email]);
 
@@ -81,9 +81,9 @@ function existsEmailInUsers(PDO $dbh, $email)
 function userExists(PDO $dbh, $userId)
 {
     $sql = '
-		SELECT COUNT(id)
-		FROM users
-		WHERE id = :id';
+        SELECT COUNT(id)
+        FROM users
+        WHERE id = :id';
     $sth = $dbh->prepare($sql);
     $sth->execute(['id' => $userId]);
 
@@ -94,9 +94,9 @@ function userExists(PDO $dbh, $userId)
 function getUserInformation(PDO $dbh, $userId)
 {
     $sql = '
-		SELECT email, name, surname
-		FROM users
-		WHERE id = :id';
+        SELECT email, name, surname
+        FROM users
+        WHERE id = :id';
     $sth = $dbh->prepare($sql);
     $sth->execute(['id' => $userId]);
 
