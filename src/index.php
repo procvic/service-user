@@ -1,5 +1,10 @@
 <?php
 
+// this service is internal - access is allowed only from one server
+if ($_SERVER['SERVER_ADDR'] != $_SERVER['REMOTE_ADDR']) {
+    die;
+}
+
 require 'vendor/autoload.php';
 require 'Model.php';
 
